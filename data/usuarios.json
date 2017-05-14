@@ -1,0 +1,12 @@
+{
+    "usuarios": [{
+        "nombre": "Son Goku",
+        "email": "songoku@dragonball.com",
+        "clave": "songoku"
+    },
+    {
+        "nombre": "Picolo",
+        "email": "picolo@dragonball.com",
+        "clave": "picolo"
+    }]
+}
