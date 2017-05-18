@@ -5,17 +5,18 @@ const mongoose = require('mongoose');
 
 // Creamos el esquema de Anuncio
 const anuncioSchema = mongoose.Schema({
-    nombre: String,
+    nombre: {type: String, index: true},
     venta: Boolean,
-    precio: Number,
+    precio: {type: Number, default: 0, index:true},
     foto: String,
     tags: [String]
 });
 
 // Creamos un método estático para filtrar
-anuncioSchema.statics.list = function (filter, limit, fields, sort, callback){
+anuncioSchema.statics.list = function (filter, limit, skip, fields, sort, callback){
     const query = Anuncio.find(filter);
     query.limit(limit);
+    query.skip(skip);
     query.select(fields);
     query.sort(sort);
     query.exec(callback);

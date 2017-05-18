@@ -1,12 +1,12 @@
 {
     "usuarios": [{
-        "nombre": "Son Goku",
-        "email": "songoku@dragonball.com",
-        "clave": "songoku"
+        "nombre": "Mortadelo",
+        "email": "mortadelo@superhumor.com",
+        "clave": "morta"
     },
     {
-        "nombre": "Picolo",
-        "email": "picolo@dragonball.com",
-        "clave": "picolo"
+        "nombre": "Filemon",
+        "email": "filemon@superhumor.com",
+        "clave": "file"
     }]
 }

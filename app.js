@@ -5,9 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+const auth = require('./middlewares/auth');
+const usuarioController = require('./routes/apiv1/usuarios');
+
 // requerimos el archivo de conexión creado para conectar con la BD y el modelo de Anuncio
 require('./lib/connectMongoose');
 require('./models/Anuncio');
+require('./models/Usuario');
+require('./models/Tags');
 
 var app = express();
 
@@ -33,8 +38,13 @@ app.use(function(req, res, next){
 
 // Rutas de nuestra Api
 app.use('/',               require('./routes/index'));
-app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
-
+app.use('/apiv1/anuncios',  require('./routes/apiv1/anuncios'));
+app.use('/apiv1/tags', require('./routes/apiv1/tags'));
+app.post('/apiv1/registroUsuario', usuarioController.registroUsuario);
+app.post('/apiv1/loginUsuario', usuarioController.loginUsuario);
+app.get('/apiv1/private', auth, function(req, res){
+  res.status(200).send({message: 'Tienes acceso a la API' });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

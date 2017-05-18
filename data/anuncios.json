@@ -1,16 +1,73 @@
 {
     "anuncios": [{
         "nombre": "Bicicleta",
+        "venta": false,
+        "precio": 5.00,
+        "foto": "public/images/bici.jpg",
+        "tags": [ "lifestyle", "motor", "work"]
+    },
+    {
+        "nombre": "Coche",
         "venta": true,
-        "precio": 230.15,
-        "foto": "bici.jpg",
+        "precio": 40.00,
+        "foto": "public/images/coche.jpg",
+        "tags": [ "motor", "lifestyle", "work"]
+    },
+    {
+        "nombre": "Caravana",
+        "venta": false,
+        "precio": 60.00,
+        "foto": "public/images/caravana.jpg",
+        "tags": [ "lifestyle","motor"]
+    },
+    {
+        "nombre": "Camper",
+        "venta": false,
+        "precio": 70.00,
+        "foto": "public/images/camper.jpg",
+        "tags": [ "lifestyle", "motor"]
+    },
+    {
+        "nombre": "Moto",
+        "venta": true,
+        "precio": 55.00,
+        "foto": "public/images/moto.jpg",
+        "tags": [ "lifestyle", "motor"]
+    },
+    {
+        "nombre": "Vespa",
+        "venta": false,
+        "precio": 50.00,
+        "foto": "public/images/vespa.jpg",
         "tags": [ "lifestyle", "motor"]
     },
     {
         "nombre": "iPhone 3GS",
-        "venta": false,
-        "precio": 50.00,
-        "foto": "iphone.png",
-        "tags": [ "lifestyle", "mobile"]
-    }]
+        "venta": true,
+        "precio": 10.00,
+        "foto": "public/images/iphone3.jpg",
+        "tags": [ "mobile", "work"]
+    },
+    {
+        "nombre": "iPhone 4S",
+        "venta": true,
+        "precio": 25.00,
+        "foto": "public/images/iphone4.jpg",
+        "tags": [ "mobile", "work"]
+    },
+    {
+        "nombre": "iPhone 6S",
+        "venta": true,
+        "precio": 75.00,
+        "foto": "public/images/iphone6.jpg",
+        "tags": [ "mobile", "work"]
+    },
+    {
+        "nombre": "Samsung S6",
+        "venta": true,
+        "precio": 55.00,
+        "foto": "public/images/samsung.jpg",
+        "tags": [ "mobile", "work"]
+    }
+    ]
 }

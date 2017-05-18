@@ -5,14 +5,17 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "DEBUG=nodeapi:* nodemon",
-    "installDB": "DEBUG=nodepop:* nodemon -L ./install_db.js"
+    "installDB": "DEBUG=nodepop:* nodemon ./install_db.js"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "ejs": "~2.5.6",
     "express": "~4.15.2",
+    "jwt-simple": "^0.5.1",
+    "moment": "^2.18.1",
     "mongodb": "^2.2.26",
     "mongoose": "^4.9.8",
     "morgan": "~1.8.1",
