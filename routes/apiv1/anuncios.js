@@ -36,24 +36,25 @@ router.get('/', (req, res, next) => {
         switch(precio){
             case '10-50':
                 filter.precio = {
-                $gte: 10,
-                $lte: 50
-            };
+                    $gte: 10,
+                    $lte: 50
+                };
             break;
 
             case '10-':
                 filter.precio = {
-                $gte: 10,
-            };
+                    $gte: 10,
+                };
             break;
 
             case '-50':
                 filter.precio = {
-                $lte: 50,
-            };
+                    $lte: 50,
+                };
             break;
+
             // si no es ninguno de estos que filtre por precio = 'loquesea'
-            default:
+            default :
                 filter.precio = precio;
         }
     }
@@ -61,8 +62,8 @@ router.get('/', (req, res, next) => {
 
     // Añadir filtrado por tags
     if (tags) {
-        // Los diferentes tags los separamos "/" así que se convierte en un array
-        let listaTags = tags.split("/")
+        // Los diferentes tags los separamos por comas "," y los metemos en un array
+        let listaTags = tags.split(",")
         console.log(listaTags);
 
         // Recuperamos todos los tags en la listaTags
@@ -99,6 +100,19 @@ router.post('/', (req, res, next) => {
     });
 
 })
+
+/*lista de Tags existentes */
+router.get('/tags', (req, res, next) => {
+     Anuncio.listaTags((err, lista) => {
+            if (err){
+                next(err);
+                return;
+            }
+            res.json({success: true, result: lista});
+     });  
+
+});
+
 
 module.exports = router;
 

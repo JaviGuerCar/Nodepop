@@ -1,5 +1,6 @@
 "use strict";
 
+// cargamos los modulos necesarios
 const Anuncio = require('../models/Anuncio');
 const mongoose = require ('mongoose');
 const leeJson = require ('./leeJson');
@@ -7,7 +8,7 @@ mongoose.Promise = global.Promise;
 
 
 function cargaAnuncios(callback){
-
+    // Llamamos a la función leeJson
     leeJson('anuncios.json', function(err, listaAnuncios){
     if(err){
         console.log('Ha habido un error');

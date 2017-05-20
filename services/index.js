@@ -5,6 +5,8 @@
 const jwt = require('jwt-simple');
 const moment = require('moment');
 const config = require('../config');
+const customError = require('../customError');
+
 
 // Función para enviar y crear el token
 function createToken (usuario){
@@ -19,29 +21,33 @@ function createToken (usuario){
 
 // Función para decodificar el token
 function decodeToken (token) {
+    // Creamos una promesa
     const decoded = new Promise((resolve, reject) => {
         try {
+            // Creamos el objeto payload y llamamos a la función decode de JWT
             const payload = jwt.decode(token, config.SECRET_TOKEN);
-
+            
             // validamos que el token no esté caducado
             if (payload.exp <= moment().unix()){
                 reject({
-                    status: 500,
-                    message: 'El token ha expirado'
+                    status: 401,
+                    message: customError.tokenExpirado
                 })
             };
-
+            // Si no está caducado, hacemos resolve
             resolve(payload.sub);
 
         } catch (err) {
+            console.log('Token invalido');
             reject({
                 status: 500,
-                message: 'Invalid Token'
+                message: customError.tokenInvalido
             })
         }
     }) 
-
+    
     return decoded;
+    
 }
 
 module.exports = {

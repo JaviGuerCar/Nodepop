@@ -22,6 +22,11 @@ anuncioSchema.statics.list = function (filter, limit, skip, fields, sort, callba
     query.exec(callback);
 }
 
+// Creamos método estático para listar los Tags usados en la base de datos
+anuncioSchema.statics.listaTags = function(callback){
+    Anuncio.distinct('tags',callback);
+};
+
 // Creamos el modelo de Anuncio
 var Anuncio = mongoose.model('Anuncio', anuncioSchema);
 

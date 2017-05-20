@@ -12,7 +12,7 @@ const usuarioController = require('./routes/apiv1/usuarios');
 require('./lib/connectMongoose');
 require('./models/Anuncio');
 require('./models/Usuario');
-require('./models/Tags');
+const customError = require('./customError');
 
 var app = express();
 
@@ -32,13 +32,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Middleware
 app.use(function(req, res, next){
-  console.log("Soy un middleware, y estoy evaluando la petición", req.originalUrl);
+  console.log("Evaluando la petición: ", req.originalUrl);
   next(); 
 });
 
 // Rutas de nuestra Api
 app.use('/',               require('./routes/index'));
-app.use('/apiv1/anuncios',  require('./routes/apiv1/anuncios'));
+app.use('/apiv1/anuncios', auth, require('./routes/apiv1/anuncios'));
 app.use('/apiv1/tags', require('./routes/apiv1/tags'));
 app.post('/apiv1/registroUsuario', usuarioController.registroUsuario);
 app.post('/apiv1/loginUsuario', usuarioController.loginUsuario);
@@ -48,7 +48,7 @@ app.get('/apiv1/private', auth, function(req, res){
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var err = new Error(customError.errorNotFound);
   err.status = 404;
   next(err);
 });
@@ -58,7 +58,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
 
   if(isAPI(req)){
-    res.json({success: false, error: err.message});
+    res.json({success: false, error: customError.errorNotFound});
     return;
   }
   // set locals, only providing error in development
@@ -70,7 +70,7 @@ app.use(function(err, req, res, next) {
 });
 
 function isAPI(req){
-  return req.originalUrl.indexOf('/apiv') === 0;
+  return req.originalUrl.indexOf('/api') === 0;
 }
 
 module.exports = app;

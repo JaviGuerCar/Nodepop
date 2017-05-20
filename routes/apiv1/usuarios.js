@@ -4,6 +4,7 @@
 const mongoose = require('mongoose');
 const Usuario = require('../../models/Usuario');
 const services = require('../../services')
+const customError = require('../../customError');
 
 // Función de registro de Usuarios
 function registroUsuario (req, res) {
@@ -15,25 +16,32 @@ function registroUsuario (req, res) {
 
     usuario.save((err) => {
         if (err){
-            res.status(500).send({message: 'Error al crear el usuario', err});
+            res.status(500).send({message:customError.registroIncorrecto, err});
         }
-        return res.status(200).send({token: services.createToken(usuario)}); // Enviamos el token
+        console.log(customError.registroCorrecto);
+        return res.status(201).send({
+            message: customError.registroCorrecto,
+            token: services.createToken(usuario)// Enviamos el token
+        }); 
     })
 }
 
 // Función de logeo de Usuarios
 function loginUsuario (req, res) {
-    Usuario.find({ email: req.body.email }, (err, usuario) => {
+    Usuario.findOne({ email: req.body.email.toLowerCase(), clave:req.body.clave.toLowerCase() }, (err, usuario) => {
         if(err){
             return res.status(500).send({message: err});
+            
         }
         if(!usuario){
-            return res.status(404).send({message:'No existe el usuario'});
+            console.log("No existe el usuario");
+            return res.status(404).send({message:customError.loginIncorrecto});
         }
         req.usuario = usuario;
+        console.log(usuario)
         res.status(200).send({
-            message: 'Te has logeado correctamente',
-            token: services.createToken(usuario)
+            message: customError.loginCorrecto,
+            token: services.createToken(usuario) // Enviamos el token
         })
     })
 }

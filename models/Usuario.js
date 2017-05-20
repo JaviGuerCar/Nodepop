@@ -14,11 +14,11 @@ const usuarioSchema = mongoose.Schema({
 }); 
 
 // Usamos el pre para hacer el hash antes de guardar el usuario
-usuarioSchema.pre('save', (next) => {
+usuarioSchema.pre('save', function(next) {
     var usuario = this;
-    // if (!usuario.isModified('clave')){
-    //     return next();
-    // }
+    if (!usuario.isModified('clave')){
+        return next();
+    }
     bcrypt.genSalt(10, (err, salt) => {
         if (err){
             return next();

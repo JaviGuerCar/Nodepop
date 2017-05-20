@@ -1,5 +1,6 @@
 "use strict";
 
+// cargamos los modulos necesarios
 const Usuario = require('../models/Usuario');
 const mongoose = require ('mongoose');
 const leeJson = require ('./leeJson');
@@ -7,7 +8,7 @@ mongoose.Promise = global.Promise;
 
 
 function cargaUsuarios(callback){
-
+    // Llamamos a la función leeJson
     leeJson('usuarios.json', function(err, listaUsuarios){
     if(err){
         console.log('Ha habido un error');
