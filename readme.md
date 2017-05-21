@@ -55,10 +55,10 @@ Podemos usar filtros para listar los anuncios de determinada manera. Estos filtr
 * Sort: ordena los anuncios por un campo determinado. Ej: `http://localhost:3000/apiv1/anuncios?sort=precio` Esto ordenaría por precio.
 * Tags: lista por tipo de tags. Podemos poner más de uno separando por coma. Ej: `http://localhost:3000/apiv1/anuncios?tags=mobile,work`
 * Precio: listamos por rangos de precios. Hemos establecido tres rangos:
-	* Precios entre 10-50. Pondríamos 10-50 en la consulta. Ej: `http://localhost:3000/apiv1/anuncios?precio=10-50`
-	* Precios mayores que 10. Pondríamos en la consulta 10- Ej: `http://localhost:3000/apiv1/anuncios?precio=10-`
-	* Precios menores que 50. Pondríamos en la consulta -50 Ej: `http://localhost:3000/apiv1/anuncios?precio=-50`
-	* Listar por cualquier precio: Ej: Precios mayores que 10. Pondríamos en la consulta 10- Ej: `http://localhost:3000/apiv1/anuncios?precio=10`
+	* Precios entre un rango inferior y superior. Ejemplo para precios entre 10 y 50. Ej: `http://localhost:3000/apiv1/anuncios?precio=10-50`
+	* Precios mayores que un número dado. Por ejemplo precio mayor que 10. Ej: `http://localhost:3000/apiv1/anuncios?precio=10-`
+	* Precios menores que que un número dado. Por ejemplo precio menor que 50. Ej: `http://localhost:3000/apiv1/anuncios?precio=-50`
+	* Listar por cualquier precio: Por ejemplo precio igual a 10. Ej: `http://localhost:3000/apiv1/anuncios?precio=10`
 
 
 **Listado de tags**
