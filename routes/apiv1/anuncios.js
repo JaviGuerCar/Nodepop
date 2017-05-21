@@ -30,33 +30,38 @@ router.get('/', (req, res, next) => {
         filter.venta = venta;
     }
     
-    // le añadimos filtro por rangos de precios ya predefinidos
-    if (precio) {
-        // para ello usamos un switch para los distintos casos que nos piden
-        switch(precio){
-            case '10-50':
-                filter.precio = {
-                    $gte: 10,
-                    $lte: 50
+    // Filtro para rangos de precios.
+    if (precio){
+        // Metemos el rango en un array suprimiendo el signo "-""
+        let rangoPrecios = precio.split('-');
+        console.log(rangoPrecios);
+        // Definimos dos variables:
+        // RangoInferior es el primer valor del array
+        // RangoSuperior es el segundo valor del array
+        let rangoInferior = rangoPrecios[0];
+        let rangoSuperior = rangoPrecios[1];
+        // Si en el array existen los dos elementos, es que está filtrando entre dos valores
+        if(rangoInferior&&rangoSuperior){
+            filter.precio = {
+                    $gte: rangoInferior,
+                    $lte: rangoSuperior
                 };
-            break;
-
-            case '10-':
-                filter.precio = {
-                    $gte: 10,
-                };
-            break;
-
-            case '-50':
-                filter.precio = {
-                    $lte: 50,
-                };
-            break;
-
-            // si no es ninguno de estos que filtre por precio = 'loquesea'
-            default :
+        } else { // Si nos dan el rango inferior seguido de -, filtramos desde el rangoInferior
+            if (isNaN(precio)) {
+                 if(rangoInferior){
+                    filter.precio={
+                        $gte: rangoInferior
+                    }
+                 }
+             // Si nos dan el signo - seguido del rangoSuperior, filtramos hasta el rangoSuperior
+            } else if(rangoSuperior){
+                filter.precio={
+                    $lte: rangoSuperior
+                }
+            } else { // Si solo nos dan un valor, filtramos por ese valor
                 filter.precio = precio;
-        }
+            }
+        }   
     }
 
 
