@@ -6,9 +6,8 @@ En esta práctica hemos realizado un API Rest en JS-NodeJS-Express-MongoDB. En e
 Para el despliegue de la aplicación hemos elegido la plataforma de Amazon, AWS, que es donde tenemos reservada nuestra instancia, instalada con Ubuntu. Como servidor de aplicaciones hemos usado Node, ya que nuestra aplicación está basada en dicho framework, y como servidor Web y proxy inverso usamos Nginx que es el encargado de recibir las peticiones Http y pasárselas a Node. También hemos alojado nuestra web en un subdominio de nuestro servidor. Las URL necesarias para acceder al sitio son:
 
 * Si se quiere acceder a la Api de **Nodepop**, lo hacemos por la url: [https://nodepop.javierguerrero.info](https://nodepop.javierguerrero.info). Esta es la ruta principal, desde esta otra [http://nodepop.javierguerrero.info/apiv1/anuncios](https://nodepop.javierguerrero.info/apiv1/anuncios), podrías ver el listado de anuncios si estuvieses registrado como usuario. Al no estarlo no da un error 403 y puedes ver en la cabecera que responde **Express**: 
-```{
-"message": "Lo sentimos, no tienes acceso, necesitas hacer login o registrarte"
-}```
+
+```{"message": "Lo sentimos, no tienes acceso, necesitas hacer login o registrarte"}```
 
 * Para servir los archivos estáticos delegamos la tarea a **Nginx**, para comprobarlo en la siguiente dirección [http://nodepop.javierguerrero.info/images/caravana.jpg](http://nodepop.javierguerrero.info/images/caravana.jpg), puedes observar como la cabecera Http ***X-Owner*** es mi nombre de usuario de GitHub: JaviGuerCar.
 
