@@ -19,7 +19,7 @@ Hemos aplicado certificados SSL a la API de NodePop, para el dominio [http://nod
 
 ## Instalación
 
-### **Instalar las dependencias**
+### **Clonar el repositorio**
 
 Clonar el repositorio, desde [https://github.com/JaviGuerCar/Nodepop.git](https://github.com/JaviGuerCar/Nodepop.git)
 
