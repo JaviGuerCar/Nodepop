@@ -11,7 +11,7 @@ Para el despliegue de la aplicación hemos elegido la plataforma de Amazon, AWS,
 
 * Para servir los archivos estáticos delegamos la tarea a **Nginx**, para comprobarlo en la siguiente dirección [http://nodepop.javierguerrero.info/images/caravana.jpg](http://nodepop.javierguerrero.info/images/caravana.jpg), puedes observar como la cabecera Http ***X-Owner*** es mi nombre de usuario de GitHub: JaviGuerCar.
 
-* Por otro lado, hemos alojado nuestra web personal en un subdominio en nuestro servidor web, para verlo visita la dirección: [http://web.javierguerrero.info](http://web.javierguerrero.info) o por la IP del servidor [http://52.206.45.6](http://52.206.45.6).
+* Por otro lado, hemos alojado nuestra web personal en un subdominio en nuestro servidor web, para verlo visita la dirección: [http://web.javierguerrero.info](http://web.javierguerrero.info) o por la IP del servidor [http://34.224.205.41](http://34.224.205.41).
 
 #### SSL
 Hemos aplicado certificados SSL a la API de NodePop, para el dominio [http://nodepop.javierguerrero.info](http://nodepop.javierguerrero.info), por lo que entrando por esa dirección te redirige siempre al servidor seguro [https://nodepop.javierguerrero.info](https://nodepop.javierguerrero.info).
